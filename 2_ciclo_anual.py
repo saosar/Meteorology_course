@@ -64,34 +64,23 @@ for kki in range(len(xdates)):
     ax.add_feature(cartopy.feature.BORDERS) #Se agregan los países 
     
     
-    
-    niveles_Temp2m=np.arange(15,30,1) #Indicamos los valores que tomará la variable y el intervalo de paso
-    #mapa = plt.contourf(lon_Temp2m, lat_Temp2m, xsel[kki,:,:],niveles,cmap="jet",extend='both') #Pintamos el mapa
-    
-    
-    niveles_Topo = (0.5,1,2,3,50,100,250,500,750,1000,1250,1500,1750,2000,2500,3000,3500) #np.arange(15,30,1) #Indicamos los valores que tomará la variable y el intervalo de paso
+    #NIVELES PARA TEMPERATURA
+    niveles_Temp2m = np.arange(15,30,1) #Indicamos los valores que tomará la variable y el intervalo de paso
     mapa = plt.contourf(lon_Temp2m, lat_Temp2m, xsel[kki,:,:],niveles_Temp2m,cmap="jet",extend='both') #Pintamos el mapa
+    
+    
+# =============================================================================
+#     #NIVELES PARA TOPOGRAFIA
+# =============================================================================
+    niveles_Topo = (0.5,1,2,3,50,100,250,500,750,1000,1250,1500,1750,2000,2500,3000,3500) #np.arange(15,30,1) #Indicamos los valores que tomará la variable y el intervalo de paso
     contours=plt.contour(lons, lats, z[0,:,:],niveles_Topo, colors="black",extend='both') #Agregamos los contornos
     plt.clabel(contours, inline=1, fontsize=10, fmt="%i")
 # =============================================================================
-#     contours=plt.contour(lon_Temp2m, lat_Temp2m, xsel[kki,:,:],niveles, colors="black",extend='both') #Agregamos los contornos
-#     plt.clabel(contours, inline=1, fontsize=10, fmt="%i")
-# =============================================================================
-
-# =============================================================================
-#    DE CONTORNO #plt.clim = (250,4500) #límites de la paleta de colores
-#    plt.colorbar(mapa, orientation="vertical",shrink=0.75) #Agregamos la paleta de colores
-#    otitle = "Topografia"     # Texto para el título.
-#    plt.title(otitle, size=20, loc='center', pad=8) #Agregamos título al mapa
-#    #plt.title('2010', size=18, loc='right', pad=8)  
-# =============================================================================
-# =============================================================================
-# 
-# =============================================================================
+    
     plt.clim = (15,30) #límites de la paleta de colores
     plt.colorbar(mapa, orientation="vertical",shrink=0.75) #Agregamos la paleta de colores
-    plt.title('Temperatura 2m (°C) ' + yymo, size=20, loc='center', pad=8) #Agregamos título al mapa
-    plt.title(anio, size=18, loc='right', pad=8)  
+    plt.title('Temperatura 2m (°C) ' + '2011-2015 mes ' + mes, size=20, loc='center', pad=8) #Agregamos título al mapa
+    #plt.title(anio, size=18, loc='right', pad=8)   #año parte superficial
 
     #Agregamos el grid
     gl= ax.gridlines(color="black",draw_labels=True,linestyle="--")
@@ -103,6 +92,36 @@ for kki in range(len(xdates)):
     gl.ylines=False #Omitimos las líneas de longitud 
     gl.xlabel_style = {'size': 15} #Tamaño etiquetas eje X 
     gl.ylabel_style = {'size': 15} #Tamaño etiquetas eje Y
+    
+    
+    # =============================================================================
+    # PRIMERA ÁREA DE INTERÉS
+    # =============================================================================
+    # Dibujar líneas para completar un rectángulo
+    # entre las longitudes lon1 y lon2, y lat1 y lat2. 
+    lat1=3.75    #Latitud más al sur
+    lat2=8.25    #Latitud más al norte
+    lon1=284.0   #Longitud más al oeste 
+    lon2=288.75  #Longitud más al este
+    ax.plot([lon1, lon2],[lat2, lat2], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon2, lon2],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon1, lon2],[lat1, lat1], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon1, lon1],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
+
+    # =============================================================================
+    # SEGUNDA ÁREA DE INTERÉS
+    # =============================================================================
+    # Dibujar líneas para completar un rectángulo
+    # entre las longitudes lon1 y lon2, y lat1 y lat2. 
+    lat1=-8.25    #Latitud más al sur  -----
+    lat2=-3.75   #Latitud más al norte ----
+    lon1=291.0   #Longitud más al oeste  |||
+    lon2=295.75  #Longitud más al este   |||
+    ax.plot([lon1, lon2],[lat2, lat2], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon2, lon2],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon1, lon2],[lat1, lat1], '-r', transform=ccrs.PlateCarree())
+    ax.plot([lon1, lon1],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
+    # =============================================================================
 
     plt.savefig('t2m_'  + yymo + '.png',dpi=300) #Guardamos la figura
 

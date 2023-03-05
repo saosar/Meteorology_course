@@ -89,6 +89,7 @@ ax.plot([lon1, lon2],[lat2, lat2], '-r', transform=ccrs.PlateCarree())
 ax.plot([lon2, lon2],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
 ax.plot([lon1, lon2],[lat1, lat1], '-r', transform=ccrs.PlateCarree())
 ax.plot([lon1, lon1],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
+# =============================================================================
 
 ofile = "height" 
 plt.savefig( ofile + '.png') #Guardamos la figura
