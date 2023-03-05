@@ -2,8 +2,7 @@
 # coding: utf-8
 
 """
-
-Basado en original por Juan Manuel Sánchez - juan.sanchez43@udea.edu.co
+Para el cálculo del ciclo anual con contorno de topografía
 """
 
 # =============================================================================
@@ -19,7 +18,7 @@ import pandas as pd
 # =============================================================================
 # Cargar y abrir  
 # =============================================================================
-# 1 CARGAR EL ARCHIVO NETCDF
+# 1 CARGAR EL ARCHIVO NETCDF DE TOPOGRAFIA
 datos = xr.open_dataset('heightmask.nc') #Se carga el archivo NetCDF
 z = (datos.z)  #
 lats = datos.latitude #tomamos los datos de la variable latitud
@@ -123,5 +122,5 @@ for kki in range(len(xdates)):
     ax.plot([lon1, lon1],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
     # =============================================================================
 
-    plt.savefig('t2m_'  + yymo + '.png',dpi=300) #Guardamos la figura
+    plt.savefig('Temp2m_'  + yymo + '.png',dpi=300) #Guardamos la figura
 
