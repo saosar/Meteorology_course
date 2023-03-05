@@ -1,0 +1,43 @@
+COMANDOS UTILIZADOS EN EL TRABAJO 
+
+*Para topografía se utilizará: ** geopotential.nc **
+	z = Φ/g ---> z es la altura,  Φ es el geopotencial y g es la gravedad=9.81 m/s²
+	> cdo -f nc -r -b 64 divc,9.81 geopotential.nc height.nc
+	
+*Para editar los atributos de height.nc: (ya no será geopotential [m2/s2], sino height [m]), la nueva variable será Geopotential Height [m]
+	> ncatted -O -a standard_name,z,o,c,"height" height.nc
+	> ncatted -O -a long_name,z,o,c,"Geopotential Height" height.nc
+	> ncatted -O -a units,z,o,c,"m" height.nc
+
+*Para corregir el mapa con el mar a una altura de cero "0" se utiliza la mascara: ** landseamask.nc ** multiplicando por 	dicha máscara a las alturas.
+	> cdo -f nc -r -b 64 mul height.nc landseamask.nc heightmask.nc
+
+#NOTA: NUEVOS ARCHIVOS LLAMADOS "height.nc" "heightmask.nc", en donde "heightmask.nc" permitirá trabajar los contornos de topografía de la zona de estudio.
+_______________________________________________________________________________________________________________
+
+Para  ** t2m_mon_2011-2015.nc  **
+
+2. Ciclo Anual
+*visualizar
+	> ncview t2m_mon_2011-2015.nc 
+	
+*observar las variables, observar los 60 pasos de tiempo con datos, y el numero de pasos de tiempo
+	> cdo vardes t2m_mon_2011-2015.nc 
+	> cdo info t2m_mon_2011-2015.nc 
+	> cdo ntime t2m_mon_2011-2015.nc
+	
+*Hacer 4 operaciones en una con el fin de calcula el ciclo medio anual de temperatura en grados centigrados:
+	cambiar las unidades de [K] a [C] : chunit,K,C 
+ 	cambiar de nombre a la variable:  chname,t2m,Temp2m
+	convertir de Kelvin "K" a Celcius "°C" con resta: subc,273.15
+	calcula el ciclo medio anual: ymonmean
+	
+	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 -ymonmean t2m_mon_2011-2015.nc t2m_mon_2011-2015_ciclo_anual.nc
+	
+#NOTA: NUEVO ARCHIVO LLAMADO "t2m_mon_2011-2015_ciclo_anual.nc"
+* Nuevamente se visualiza que las variables del archivo resultante estén bien, con 12 pasos de tiempo, y en [C]
+
+________________________________________________________________________________________________________________
+
+
+
