@@ -28,10 +28,10 @@ ifile="prom_estacional_multianual_mnssns.nc" # Abajo se usarán los nombres de l
 # =============================================================================
 # ÁREA 1
 # =============================================================================
-lati1=2.0    #Latitud más al sur
+lati1=1.5    #Latitud más al sur
 lati2=9.0    #Latitud más al norte
 long1=283.0   #Longitud más al oeste 
-long2=290.0  #Longitud más al este
+long2=290.5  #Longitud más al este
 
 os.system("echo ")
 os.system("echo Promedios para Región limitada por:")
@@ -115,9 +115,9 @@ plt.close()
 # AREA 2
 # =============================================================================
 lati3=-8.0    #Latitud más al sur  -----
-lati4=-1.0   #Latitud más al norte ----
+lati4=-0.5   #Latitud más al norte ----
 long3=294.0   #Longitud más al oeste  |||
-long4=301.0  #Longitud más al este   |||
+long4=301.5  #Longitud más al este   |||
 
 
 os.system("echo ")
