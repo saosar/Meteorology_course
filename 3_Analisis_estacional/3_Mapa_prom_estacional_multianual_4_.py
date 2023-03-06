@@ -75,7 +75,7 @@ for kki in range(len(xdates)):
     contours=plt.contour(lons, lats, z[0,:,:],niveles_Topo, colors="black",extend='both') #Agregamos los contornos
     plt.clabel(contours, inline=1, fontsize=10, fmt="%i")
 # =============================================================================
-    
+    #mes = ["DEF","MAM","JJA","SON"]  ############################CAMBIO
     plt.clim = (15,30) #límites de la paleta de colores
     plt.colorbar(mapa, orientation="vertical",shrink=0.75) #Agregamos la paleta de colores
     plt.title('Temperatura 2m (°C) ' + '2011-2015 mes ' + mes, size=20, loc='center', pad=8) #Agregamos título al mapa
