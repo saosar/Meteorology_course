@@ -18,7 +18,7 @@ import os
 
 
 # 1. Cargando el archivo
-ifile="t2m_mon_2011-2015_celsius60.nc" # Abajo se usarán los nombres de la variable de interés (temperatura = Temp2m ) y de la variable tiempo (fechas = time)
+ifile="prom_estacional_ssns.nc" # Abajo se usarán los nombres de la variable de interés (temperatura = Temp2m ) y de la variable tiempo (fechas = time)
                              # Estos nombres puede averiguarlos via inspección previa con "ncdump -h <ifile>"
 
 #_______________________________________________________________________________________________________________________
@@ -28,8 +28,6 @@ ifile="t2m_mon_2011-2015_celsius60.nc" # Abajo se usarán los nombres de la vari
 # =============================================================================
 # ÁREA 1
 # =============================================================================
-
-
 lati1=2.0    #Latitud más al sur
 lati2=9.0    #Latitud más al norte
 long1=283.0   #Longitud más al oeste 
@@ -99,26 +97,32 @@ for kk in range(len(fch)):
 # En nuestro ejemplo, solo usaremos el año y el mes para las xticks:
 	yymo = year + month                # Concatenando año y mes. El string resultante tiene la forma YYYYMM (e.g. 201112 cuando el año es 2011 y el mes es Diciembre)
 	mons2.append(yymo)
+    
+mons3=["DEF-2011","MAM-2011","JJA-2011","SON-2011",
+       "DEF-2012","MAM-2012","JJA-2012","SON-2012",
+       "DEF-2013","MAM-2013","JJA-2013","SON-2013",
+       "DEF-2014","MAM-2014","JJA-2014","SON-2014",
+       "DEF-2015","MAM-2015","JJA-2015","SON-2015","D-2015"]
 
 #Para hacer una gráfica sencilla del promedio obtenido:
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav1, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3, rotation='vertical') #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área 1")
-plt.savefig('serie_tiempo_prom_esp_area_1_.jpg', dpi=600)  #Guardar figura
+plt.savefig('serie_tiempo_ciclo_anual_area_1_21PASOS.jpg', dpi=600)  #Guardar figura
 plt.show()
 plt.close()
 
 # =============================================================================
 # AREA 2
 # =============================================================================
-
 lati3=-8.0    #Latitud más al sur  -----
 lati4=-1.0   #Latitud más al norte ----
 long3=294.0   #Longitud más al oeste  |||
 long4=301.0  #Longitud más al este   |||
+
 
 os.system("echo ")
 os.system("echo Promedios para Región limitada por:")
@@ -149,7 +153,7 @@ aav2 = f2.flatten()                         # En este arreglo está almacenada l
 # 3. GUARDANDO PROMEDIOS ESPACIALES EN UN ARCHIVO ASCII simple
 # Ahora guardamos la serie de tiempo del promedio temporal en un archivo ASCII:
 aav2name="ts_mi-serie-sencilla_fch_area2.txt"    # Nombre del archivo ASCII de salida
-os.system("rm -f "+aav1name)                   # Borramos el archivo, si es que existe previamente.  Esto evita que se crezca un archivo previo.
+os.system("rm -f "+aav2name)                   # Borramos el archivo, si es que existe previamente.  Esto evita que se crezca un archivo previo.
 fl = open(aav2name,'w')
 for i in range(len(aav2)):
 	fl.write("%8.4f\n" % (aav2[i]))        # Guardamos los valores línea por línea. %8.4f guardará valores con 8 posiciones, 4 decimales.  
@@ -189,10 +193,10 @@ for kk in range(len(fch)):
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav2, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3, rotation='vertical') #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área 2")
-plt.savefig('serie_tiempo_prom_esp_area_2_.jpg', dpi=600)  #Guardar figura
+plt.savefig('serie_tiempo_ciclo_anual_area_2_21PASOS.jpg', dpi=600)  #Guardar figura
 plt.show()
 plt.close()
 
@@ -204,11 +208,11 @@ plt.close()
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav1, aav2, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3, rotation='vertical') #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área combinada")
 plt.legend(["Área 1","Área 2"],loc=1)
-plt.savefig('serie_tiempo_prom_esp_area_combinada_.jpg', dpi=600)  #Guardar figura
+plt.savefig('serie_tiempo_ciclo_anual_area_combinada_21PASOS.jpg', dpi=600)  #Guardar figura
 plt.show()
 plt.close()
 
