@@ -98,16 +98,13 @@ for kk in range(len(fch)):
 	yymo = year + month                # Concatenando año y mes. El string resultante tiene la forma YYYYMM (e.g. 201112 cuando el año es 2011 y el mes es Diciembre)
 	mons2.append(yymo)
     
-#mons2=["E","F","M","A","M","J","J","A","S","O","N","D"]
-# =============================================================================
-# HELP !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! PLS
-# =============================================================================
+mons3=["E","F","M","A","M","J","J","A","S","O","N","D"]
 
 #Para hacer una gráfica sencilla del promedio obtenido:
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav1, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3) #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área 1")
 plt.savefig('serie_tiempo_ciclo_anual_area_1_.jpg', dpi=600)  #Guardar figura
@@ -192,7 +189,7 @@ for kk in range(len(fch)):
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav2, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3) #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área 2")
 plt.savefig('serie_tiempo_ciclo_anual_area_2_.jpg', dpi=600)  #Guardar figura
@@ -207,7 +204,7 @@ plt.close()
 plt.figure(figsize=(15,6.5))
 plt.plot(mons2, aav1, aav2, 'black', linewidth=1.0) #la funcion plot de matplotlib nos permite graficar
 plt.xlabel("Tiempo") #Definimos el nombre del eje x
-plt.xticks(mons2, mons2, rotation='vertical')
+plt.xticks(mons2, mons3) #Cambiamos las cositas de los nombres del eje  x
 plt.ylabel("Temperatura (°C)")
 plt.title("Serie de Tiempo Promedio Espacial - Área combinada")
 plt.legend(["Área 1","Área 2"],loc=1)

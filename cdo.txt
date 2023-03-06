@@ -37,6 +37,7 @@ Para  ** t2m_mon_2011-2015.nc  **
 #NOTA: NUEVO ARCHIVO LLAMADO "t2m_mon_2011-2015_ciclo_anual.nc"
 * Nuevamente se visualiza que las variables del archivo resultante estén bien, con 12 pasos de tiempo, y en [C]
 	
+	
 	Ya que se necesita la variaciòn de los 60 meses 2011-2015 en celsius para la serie de tiempo del promedio espacial para cada área de interés, se calcula el archivo original en celcius:
 	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 t2m_mon_2011-2015.nc t2m_mon_2011-2015_celsius60.nc
 	
@@ -63,5 +64,19 @@ ________________________________________________________________________________
 	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 -yseasmean t2m_mon_2011-2015.nc prom_estacional_multianual_mnssns.nc
 	
 ________________________________________________________________________________________________________________
+
+4. ANOMALIAS
+
+* 1. Anomalías respecto al ciclo anual. Usar ymonsub. Lo que sigue debe ser escrito en
+una sola línea de comando
+
+> cdo -f nc -r -b 64 ymonsub t2m_mon_2011-2015_celsius60.nc t2m_mon_2011-2015_ciclo_anual.nc anomalias_tipo_1_anms.nc
+ 
+NOTA: 
+
+
+
+
+
 
 
