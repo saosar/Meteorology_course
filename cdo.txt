@@ -44,5 +44,24 @@ Para  ** t2m_mon_2011-2015.nc  **
 	
 ________________________________________________________________________________________________________________
 
+3. Análisis ESTACIONAL
+
+*promedio estacional : promedio de todas las estaciones (21 valores)
+	cambiar las unidades de [K] a [C] : chunit,K,C 
+ 	cambiar de nombre a la variable:  chname,t2m,Temp2m
+	convertir de Kelvin "K" a Celcius "°C" con resta: subc,273.15
+	Promedio estacional: seasmean
+	
+	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 -seasmean t2m_mon_2011-2015.nc prom_estacional_ssns.nc
+	
+#NOTA:  
+ 	Corresponde a solo los meses de ENERO Y FEBRERO ----> 1 : 2011-01-16 12:00:00       0     2835       0 :      283.10      298.41      302.63 : -1    
+ 	Corresponde a solo los meses de DICIEMBRE (un subproducto)---->   21 : 2015-12-01 00:00:00       0     2835       0 :      284.25      299.48      305.20 : -1   
+
+
+*promedio estacional multianual: promedio del promedio estacional (4 valores)
+	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 -yseasmean t2m_mon_2011-2015.nc prom_estacional_multianual_mnssns.nc
+	
+________________________________________________________________________________________________________________
 
 
