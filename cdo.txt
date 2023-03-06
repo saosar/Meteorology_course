@@ -72,7 +72,7 @@ una sola línea de comando
 
 > cdo -f nc -r -b 64 ymonsub t2m_mon_2011-2015_celsius60.nc t2m_mon_2011-2015_ciclo_anual.nc anomalias_tipo_1_anms.nc
  
-NOTA: 
+
 
 
 
