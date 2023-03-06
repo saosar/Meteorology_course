@@ -98,10 +98,10 @@ for kki in range(len(xdates)):
     # =============================================================================
     # Dibujar líneas para completar un rectángulo
     # entre las longitudes lon1 y lon2, y lat1 y lat2. 
-    lat1=3.75    #Latitud más al sur
-    lat2=8.25    #Latitud más al norte
-    lon1=284.0   #Longitud más al oeste 
-    lon2=288.75  #Longitud más al este
+    lat1=2.0    #Latitud más al sur
+    lat2=9.0    #Latitud más al norte
+    lon1=283.0   #Longitud más al oeste 
+    lon2=290.0  #Longitud más al este
     ax.plot([lon1, lon2],[lat2, lat2], '-r', transform=ccrs.PlateCarree())
     ax.plot([lon2, lon2],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
     ax.plot([lon1, lon2],[lat1, lat1], '-r', transform=ccrs.PlateCarree())
@@ -112,10 +112,10 @@ for kki in range(len(xdates)):
     # =============================================================================
     # Dibujar líneas para completar un rectángulo
     # entre las longitudes lon1 y lon2, y lat1 y lat2. 
-    lat1=-8.25    #Latitud más al sur  -----
-    lat2=-3.75   #Latitud más al norte ----
-    lon1=291.0   #Longitud más al oeste  |||
-    lon2=295.75  #Longitud más al este   |||
+    lat1=-8.0    #Latitud más al sur  -----
+    lat2=-1.0   #Latitud más al norte ----
+    lon1=294.0   #Longitud más al oeste  |||
+    lon2=301.0  #Longitud más al este   |||
     ax.plot([lon1, lon2],[lat2, lat2], '-r', transform=ccrs.PlateCarree())
     ax.plot([lon2, lon2],[lat1, lat2], '-r', transform=ccrs.PlateCarree())
     ax.plot([lon1, lon2],[lat1, lat1], '-r', transform=ccrs.PlateCarree())

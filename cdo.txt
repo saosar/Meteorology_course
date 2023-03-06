@@ -40,6 +40,8 @@ Para  ** t2m_mon_2011-2015.nc  **
 	Ya que se necesita la variaciòn de los 60 meses 2011-2015 en celsius para la serie de tiempo del promedio espacial para cada área de interés, se calcula el archivo original en celcius:
 	> cdo -f nc -r -b 64 chunit,K,C -chname,t2m,Temp2m -subc,273.15 t2m_mon_2011-2015.nc t2m_mon_2011-2015_celsius60.nc
 	
+#NOTA: NUEVO ARCHIVO LLAMADO "t2m_mon_2011-2015_celsius60.nc"
+	
 ________________________________________________________________________________________________________________
 
 
